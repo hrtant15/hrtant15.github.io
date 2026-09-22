@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Design DX | 機械設計の業務改善・DX支援</title>
+
+    <meta name="description"
+          content="機械設計の現場経験を活かし、Excel・CSV・Python・AIなどを活用した設計業務の効率化・DXを支援します。">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Noto Sans JP",
+                sans-serif;
+            color: #222;
+            line-height: 1.8;
+            background: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+        }
+
+        /* ヘッダー */
+        header {
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-inner {
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* ファーストビュー */
+        .hero {
+            padding: 110px 0;
+            background: #f5f7fa;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.35;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            margin-bottom: 35px;
+            color: #555;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        /* セクション */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* 悩み */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 30px;
+            background: #fff;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* サービス */
+        .services {
+            background: #f8f8f8;
+        }
+
+        .service {
+            padding: 35px;
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            color: #666;
+        }
+
+        /* 強み */
+        .strength {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .strength-item {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .number {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* ご依頼の流れ */
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .flow-item {
+            text-align: center;
+            padding: 25px;
+            background: #f7f7f7;
+            border-radius: 8px;
+        }
+
+        .flow-item strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* 改善事例 */
+        .case {
+            border-left: 4px solid #222;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            background: #f7f7f7;
+        }
+
+        .case h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Note */
+        .note {
+            text-align: center;
+            background: #f5f7fa;
+        }
+
+        /* お問い合わせ */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        /* フッター */
+        footer {
+            padding: 30px 0;
+            background: #222;
+            color: #fff;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .cards,
+            .strength,
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ヘッダー -->
+<header>
+    <div class="container header-inner">
+
+        <div class="logo">
+            Design DX
+        </div>
+
+        <nav>
+            <a href="#service">サービス</a>
+            <a href="#strength">強み</a>
+            <a href="#case">改善事例</a>
+            <a href="#note">Note</a>
+            <a href="#contact">お問い合わせ</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- メイン -->
+<section class="hero">
+
+    <div class="container">
+
+        <h1>
+            設計現場の
+            <span>「面倒」を、もっとラクに。</span>
+        </h1>
+
+        <p class="hero-sub">
+            機械設計 × 業務改善 × Python・AI
+        </p>
+
+        <p style="max-width: 700px; margin-bottom: 35px;">
+            機械設計の現場経験を活かし、
+            Excel・CSV・Python・AIなどを活用して、
+            設計部門の繰り返し作業やデータ処理を効率化します。
+        </p>
+
+        <a href="#contact" class="button">
+            まずは相談する
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- お困りごと -->
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>こんなお困りごとはありませんか？</h2>
+            <p>大規模なDXではなく、小さな改善から。</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Excelへの転記が多い</h3>
+                <p>
+                    設計データを何度もExcelへ
+                    コピー・貼り付けしている。
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>CSV処理が面倒</h3>
+                <p>
+                    CSVデータの整理や加工を
+                    毎回手作業で行っている。
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>同じ作業を繰り返している</h3>
+                <p>
+                    毎日・毎週同じような作業を
+                    繰り返している。
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>設計データの整理が大変</h3>
+                <p>
+                    ファイル名変更やフォルダ整理、
+                    部品表作成などに時間がかかる。
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>社内にIT担当者がいない</h3>
+                <p>
+                    改善したいけれど、
+                    IT・プログラミングに詳しい人がいない。
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>大規模なシステムは必要ない</h3>
+                <p>
+                    システム導入までは必要ない。
+                    まずは小さな作業だけ改善したい。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- サービス -->
+<section id="service" class="services">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>サービス</h2>
+            <p>設計現場の「ちょっと面倒」を改善します。</p>
+        </div>
+
+        <div class="service">
+            <h3>Excel・CSV業務の自動化</h3>
+            <p>
+                ExcelやCSVを使った集計・加工・転記など、
+                繰り返し発生する作業を自動化します。
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>設計業務の効率化</h3>
+            <p>
+                機械設計の業務フローを確認し、
+                手作業になっている部分を整理。
+                より効率的な方法を提案します。
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>Pythonによる業務改善</h3>
+            <p>
+                Pythonを利用して、
+                データ処理やファイル操作などの
+                定型作業を自動化します。
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>AIを活用した業務改善</h3>
+            <p>
+                AIを単なるチャットツールとしてではなく、
+                実際の業務改善に活用する方法を検討します。
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 強み -->
+<section id="strength">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>私たちの強み</h2>
+        </div>
+
+        <div class="strength">
+
+            <div class="strength-item">
+                <div class="number">01</div>
+                <h3>機械設計を理解</h3>
+                <p>
+                    CAD・図面・部品表など、
+                    設計現場の業務を理解した上で
+                    改善方法を考えます。
+                </p>
+            </div>
+
+            <div class="strength-item">
+                <div class="number">02</div>
+                <h3>小さく始める</h3>
+                <p>
+                    いきなり大規模なシステムを
+                    導入するのではなく、
+                    小さな改善から始めます。
+                </p>
+            </div>
+
+            <div class="strength-item">
+                <div class="number">03</div>
+                <h3>現場目線</h3>
+                <p>
+                    「技術を導入すること」ではなく、
+                    実際に作業時間を減らすことを
+                    重視します。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ご依頼の流れ -->
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>ご依頼の流れ</h2>
+        </div>
+
+        <div class="flow">
+
+            <div class="flow-item">
+                <strong>STEP 1</strong>
+                ご相談
+            </div>
+
+            <div class="flow-item">
+                <strong>STEP 2</strong>
+                業務内容の整理
+            </div>
+
+            <div class="flow-item">
+                <strong>STEP 3</strong>
+                改善方法の提案・開発
+            </div>
+
+            <div class="flow-item">
+                <strong>STEP 4</strong>
+                導入・改善
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 改善事例 -->
+<section id="case" class="services">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>改善事例</h2>
+            <p>
+                実際の改善事例を順次掲載していきます。
+            </p>
+        </div>
+
+        <div class="case">
+
+            <h3>CSVデータ処理の効率化</h3>
+
+            <p>
+                【Before】手作業でデータを整理
+            </p>
+
+            <p>
+                【After】Pythonによる自動処理を検討・実装
+            </p>
+
+            <p>
+                ※具体的な数値・内容は準備でき次第掲載します。
+            </p>
+
+        </div>
+
+        <div class="case">
+
+            <h3>設計業務の定型作業改善</h3>
+
+            <p>
+                設計業務で繰り返し発生する作業を整理し、
+                自動化・効率化する方法を検討します。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Note -->
+<section id="note" class="note">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Note</h2>
+
+            <p>
+                機械設計・業務改善・Python・AIについて
+                実際に試したことを発信しています。
+            </p>
+
+        </div>
+
+        <!-- 後でNoteのURLに変更 -->
+        <a href="#" class="button">
+            Noteを見る
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- お問い合わせ -->
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>お問い合わせ</h2>
+
+            <p>
+                「こんな作業って自動化できる？」
+                という段階でもお気軽にご相談ください。
+            </p>
+
+        </div>
+
+        <!-- 後で自分のメールアドレスに変更 -->
+        <a href="mailto:contact@example.com" class="button">
+            メールで相談する
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- フッター -->
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 Design DX
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
