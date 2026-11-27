@@ -12,6 +12,15 @@
   <meta property="og:title" content="Design DX | 設計現場の「面倒」を、もっとラクに。">
   <meta property="og:description" content="機械設計の実務経験を活かしたCAD・Excel・図面管理の業務改善と自動化。">
   <meta property="og:url" content="https://hrtant15.github.io/designdx/">
+  <meta property="og:image" content="https://hrtant15.github.io/designdx/designdx-ogp.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1732">
+  <meta property="og:image:height" content="908">
+  <meta property="og:image:alt" content="Design DX — 設計現場の「面倒」を、もっとラクに。">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hrtant15.github.io/designdx/designdx-ogp.png">
+  <meta name="twitter:image:alt" content="Design DX — 設計現場の「面倒」を、もっとラクに。">
+  <link rel="icon" type="image/png" sizes="80x80" href="./designdx-logo.png">
   <meta name="theme-color" content="#132e46">
   <style>
     :root { --navy:#132e46; --deep:#0e2235; --blue:#176d9b; --ink:#243747; --muted:#526575; --line:#dce5eb; --surface:#f3f7fa; }
@@ -29,6 +38,15 @@
     .header-inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
     .logo { text-decoration:none; font-weight:800; font-size:23px; letter-spacing:-.04em; color:var(--navy); white-space:nowrap; }
     .logo span { color:var(--blue); }
+    .logo { display:inline-flex; align-items:center; gap:10px; }
+    .logo .brand-wordmark { color:var(--navy); }
+    .brand-icon { display:block; width:44px; height:44px; border-radius:50%; object-fit:contain; flex:none; }
+    .footer-brand { display:inline-flex; align-items:center; gap:10px; }
+    .footer-brand .brand-icon { width:32px; height:32px; }
+    @media(max-width:560px) {
+      .logo { font-size:21px; gap:8px; }
+      .logo .brand-icon { width:38px; height:38px; }
+    }
     nav { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
     nav a { font-size:14px; font-weight:600; text-decoration:none; }
     nav a:hover { color:var(--blue); }
@@ -134,7 +152,7 @@
   <a class="skip" href="#main">本文へ移動</a>
   <header>
     <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="Design DX トップ">Design <span>DX</span></a>
+      <a class="logo" href="#top" aria-label="Design DX トップ"><img class="brand-icon" src="./designdx-logo.png" alt="" width="80" height="80"><span class="brand-wordmark">Design <span>DX</span></span></a>
       <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰ メニュー</button>
       <nav id="site-nav" aria-label="メインナビゲーション">
         <a href="#service">サービス</a><a href="#case">改善事例</a><a href="#strength">強み</a><a href="#about">プロフィール</a><a href="#note">note</a><a class="nav-contact" href="#contact">お問い合わせ</a>
@@ -259,7 +277,7 @@
       <p class="small">機密情報・図面・個人情報などは、公開コメント欄に記載しないようお願いします。</p>
     </div></section>
   </main>
-  <footer><div class="container footer-inner"><span>© 2026 Design DX</span><a href="https://note.com/stand_road1105">note</a><a href="#top">ページ上部へ戻る ↑</a></div></footer>
+  <footer><div class="container footer-inner"><span class="footer-brand"><img class="brand-icon" src="./designdx-logo.png" alt="" width="80" height="80">© 2026 Design DX</span><a href="https://note.com/stand_road1105">note</a><a href="#top">ページ上部へ戻る ↑</a></div></footer>
   <script>
     (() => {
       const button = document.querySelector('.menu-toggle');
